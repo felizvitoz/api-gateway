@@ -4,3 +4,8 @@ spring:
       uri: http://localhost:8889
   profiles:
     active: dev
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG

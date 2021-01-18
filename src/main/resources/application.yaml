@@ -4,15 +4,23 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: accountModule
+        - id: accountUser
           uri: lb://account-service
           predicates:
             - Path=/users/**
+        - id: accountAuthenticate
+          uri: lb://account-service
+          predicates:
+            - Path=/authenticate
 
 server:
-  port: 8085
+  port: 8087
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8090/eureka
+
+auth:
+  whitelisted-path:
+    - /authenticate
